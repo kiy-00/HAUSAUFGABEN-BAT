@@ -1,0 +1,6 @@
+get_input_data -test-data.txt -000 | -demo >-demo-result.txt
+get_input_data -test-data.txt -001 | -demo >>-demo-result.txt
+get_input_data -test-data.txt -002 | -demo >>-demo-result.txt
+get_input_data -test-data.txt -003 | -demo >>-demo-result.txt
+get_input_data -test-data.txt -004 | -demo >>-demo-result.txt
+get_input_data -test-data.txt -005 | -demo >>-demo-result.txt

@@ -1,0 +1,17 @@
+（以3-b8-为例，默认有40组测试数据）
+1.将自己的.exe和老师发的demo.exe黏贴到此文件夹下
+2.造数据：
+命令行中输入datamaker.exe >3-b8-test-data.txt
+然后键盘输入3-b8
+根据需求可自行使用Dev更改datamaker.cpp
+3.造bat：
+命令行输入testmaker.exe >3-b8-test.txt
+然后键盘输入3-b8
+命令行输入testmaker-demo.exe >3-b8-demo-test.txt
+然后键盘输入3-b8
+然后把后缀txt改成bat
+4.跑bat
+5.比较输出：
+命令行输入comp 3-b8-result.txt 3-b8-demo-result.txt（不忽略空格）
+或者fc/w 3-b8-result.txt 3-b8-demo-result.txt（忽略空格）
+去掉w会输出详细信息，不忽略空格
