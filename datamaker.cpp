@@ -21,45 +21,19 @@ int main()
 		
 		//以下是生成一组数据的方式 
 		
-		
-		
-		
-		int x=1900+rand()%201;
-		int y=rand()%12+1;
-		
-		
-		int d=rand()%28+1;
-		
-		cout<<x<<' '<<y<<' '<<d;
-		
-		
-		/*
-		人民币 
-		int xx2=rand()%100;
-		
-		double y2=1.0*xx2/100;
-		
-		
-		long long y1=rand()%10000000000;
-		
-	
-		double y=y1+y2;
-		
-		if(i==38)
-			y=0.00;
-		if(i==37)
-			y=0.02;
+		int n=rand()%10+1;
+		char src,dst;
+		if(i<15)
+			src='A',dst='B';
+		if(i<25)
+			src='B',dst='C';
+		else
+			src='C',dst='A';
 			
-		if(i==36)
-			y=1.20;
+		cout<<n<<'\n';
+		cout<<src<<'\n';
+		cout<<dst<<'\n';
 		
-		if(i==35)
-			y=1.01;
-		
-		if(i>40&&y<3000000000)
-			y+=2000000000;
-		*/
-		//cout<<y;
 		cout<<endl;
 		cout<<endl;
 		
