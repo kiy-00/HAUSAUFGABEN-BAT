@@ -1,0 +1,99 @@
+x		inixianganma a
+/* 2152180 计科 文溪 */
+/* */
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+using namespace std;
+
+/*判断是否有效*/
+int is_youxiao(char ch)
+{
+	if (ch >= '0' && ch <= '9')
+		return ch - '0';
+	else if (ch >= 'a' && ch <= 'z')
+		return ch - 'a' + 10;
+	else if (ch >= 'A' && ch <= 'Z')
+		return ch - 'A' + 10;
+	else
+		return -1;
+}
+
+/* 转化十进制 */
+int transform_ten(char* p,int len)
+{
+	int val = 0;
+	for (int i = 0; i < len; i++)
+	{
+		int temp = is_youxiao(p[i]);
+		val = 16 * val + temp;
+	}
+	return val;
+}
+
+
+int main()
+{
+	char fileprename[100], filelatname[100];
+	cout << "文件名以下形式均可以:" << endl;
+	cout << "    a.txt                     : 不带路径形式" << endl;
+	cout << "    ..\\data\\b.dat             : 相对路径形式" << endl;
+	cout << "    C:\\Windows\\System32\\c.dat : 绝对相对路径形式" << endl;
+	cout << "请输入要转换的hex格式文件名 : ";
+	cin.getline(fileprename, 100, '\n');
+	cout << "请输入转换后的文件名        : ";
+	cin.getline(filelatname, 100, '\n');
+
+	ifstream in(fileprename, ios::in | ios::binary);
+	ofstream out(filelatname, ios::out | ios::binary);
+
+	if (!in.is_open() || !out.is_open())
+	{
+		cout << "输入文件" << fileprename << "打开失败!" << endl;
+		return -1;
+	}
+	cout << hex << setfill('0');
+
+	int counts = 0;
+	while (in.peek() != -1)
+	{
+		char answer[128] = { 0 };
+		in.getline(answer, 128, '\n');
+
+		int pre_top = 0;
+		while (is_youxiao(answer[pre_top]) != -1)
+			pre_top++;
+
+		//考察偏移值
+		int real_value = transform_ten(answer, pre_top);
+		if (counts != real_value)
+		{
+			cout << "最左侧的偏移量0x" << setw(8) << real_value << "不是期望值0x" << setw(8) << counts << endl;
+			return -1;
+		}
+
+		int begin = pre_top + 1;
+		while (is_youxiao(answer[begin]) == -1)
+			begin++;//指向数据
+
+		int top = begin;
+		while (answer[top] != ' ')
+		{
+			if (is_youxiao(answer[top]) != -1)
+				out << (char)transform_ten(answer + top, 2);
+			else if (answer[top] == '-')
+				top--;   //遇到 '-' ,--保证一致
+			else
+			{
+				cout << "十六进制数无效" << endl;
+				return -1;
+			}
+			top += 3;
+		}
+		counts += 16;
+	}
+	in.close();
+	out.close();
+
+	return 0;
+}

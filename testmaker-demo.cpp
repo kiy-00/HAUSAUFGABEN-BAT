@@ -12,7 +12,7 @@ int main()
 	stxt+="-test-data.txt";
 	sre+="-demo-result.txt";
 	
-	cout<<"get_input_data "<<stxt<<' '<<s<<"-000"<<" | "<<s<<"-demo"<<" >"<<sre<<endl;
+	cout<<"get_input_data "<<stxt<<' '<<s<<"-000"<<" | "<<s<<"-demo --sub2"<<" >"<<sre<<endl;
 	for(int i=1;i<=100;i++)
 	{
 		string sdata=s;
@@ -25,7 +25,7 @@ int main()
 		sdata.push_back(x2+'0');
 		sdata.push_back(x3+'0');
 		
-		cout<<"get_input_data "<<stxt<<' '<<sdata<<" | "<<s<<"-demo"<<" >>"<<sre<<endl; 
+		cout<<"get_input_data "<<stxt<<' '<<sdata<<" | "<<s<<"-demo --sub2"<<" >>"<<sre<<endl; 
 	}
 
 	return 0;

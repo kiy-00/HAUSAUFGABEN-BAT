@@ -1,7 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
+
+
 int main()
 {
+	srand((unsigned int)(time(0)));
 	string s;
 	
 	//输入要测试的cpp的文件名，不含后缀 
@@ -19,25 +22,28 @@ int main()
 		cout<<'['<<data<<']'<<endl;
 		
 		
-		//以下是生成一组数据的方式 
+	
+			//以下是生成一组数据的方式 
 		
-		int n=rand()%10+1;
-		char src,dst;
-		if(i<15)
-			src='A',dst='B';
-		if(i<25)
-			src='B',dst='C';
-		else
-			src='C',dst='A';
+		int f=1;
+		
+		int x;
+		x=rand()&1;
+		
+		if(x)
+			f=-1;
 			
-		cout<<n<<'\n';
-		cout<<src<<'\n';
-		cout<<dst<<'\n';
+		cout<<f*rand()%1000000000;
+		
 		
 		cout<<endl;
 		cout<<endl;
 		
+	
 	}
+		
+		
+		
 	
 	return 0;
 }
